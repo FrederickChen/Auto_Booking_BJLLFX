@@ -3,7 +3,6 @@
 
 from urllib.request import urlretrieve
 import requests
-from os import remove
 import random
 from datetime import *
 from dateutil.parser import *
@@ -105,14 +104,14 @@ def book_car():
             print( "%3d)       %2d:00         %2d:00" % (idx,start_time, end_time), end='\n')
             idx = idx + 1
     print("————————————")
-    return True
+
     number = 0
     while number < 1 or number > idx:
         number = int(input('Please input a number:  '))
     verify = 'N'
     while verify != 'Y':
         verify = input('Yes/No: ')[0].upper()
-    return True
+
     post_data = {'active':'addOrder',
                  'cardNum':'NNNNNN', #Fill card number
                  'cardType':'12小时卡',
@@ -134,7 +133,6 @@ def book_car():
     post_data['r'] = random.random()
     resp = session.post(post_url, data=post_data, headers=headers)
     resp.encoding = resp.apparent_encoding
-#    print(resp)
     return True
 
 
