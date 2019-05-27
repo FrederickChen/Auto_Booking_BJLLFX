@@ -3,14 +3,11 @@
 
 from urllib.request import urlretrieve
 import requests
-from bs4 import BeautifulSoup
 from os import remove
 import random
 from datetime import *
 from dateutil.parser import *
 import json
-import numpy as np
-import operator
 try:
     import cookielib
 except:
