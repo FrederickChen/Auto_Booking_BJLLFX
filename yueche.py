@@ -108,6 +108,8 @@ def book_car():
     number = 0
     while number < 1 or number > idx:
         number = int(input('Please input a number:  '))
+    if idx > 1:
+        option = dict_data[number -1]
     verify = 'N'
     while verify != 'Y':
         verify = input('Yes/No: ')[0].upper()
@@ -129,7 +131,7 @@ def book_car():
                  'service':'计时卡',
                  'note':''}
     post_data['date'] = book_date.strftime('%Y-%m-%d')
-    post_data['itemTime'] = '{\"startTime\":'+str(dict_data[number-1]['startTime'])+',\"duration\":'+str(dict_data[number-1]['duration'])+'}'
+    post_data['itemTime'] = '{\"startTime\":'+str(option['startTime'])+',\"duration\":'+str(option['duration'])+'}'
     post_data['r'] = random.random()
     resp = session.post(post_url, data=post_data, headers=headers)
     resp.encoding = resp.apparent_encoding
